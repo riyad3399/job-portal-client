@@ -17,16 +17,20 @@ const MyJobs = () => {
   const [searchText, setSearchText] = useState("");
   const [modalShow, setModalShow] = React.useState(false);
   const [control, setControl] = useState(false);
+
+
   useEffect(() => {
-    fetch(`http://localhost:5000/myJobs/${user?.email}`)
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        setJobs(data);
-      });
-  }, [user, control]);
+    fetch(`http://localhost:5000/myjobs/${user?.email}`)
+      .then(res => res.json())
+      .then(data => {
+      setJobs(data);
+    })
+  }, [user])
+  
+
+// serch handle in input fild 
   const handleSearch = () => {
-    fetch(`http://localhost:5000/getJobsByText/${searchText}`)
+    fetch(`http://localhost:5000/jobSearchByTitle/${searchText}`)
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -76,7 +80,7 @@ const MyJobs = () => {
           </thead>
           <tbody>
             {jobs?.map((job, index) => (
-              <tr>
+              <tr key={job._id}>
                 <td>{index + 1}</td>
                 <td>{job.title}</td>
                 <td>{job.category}</td>

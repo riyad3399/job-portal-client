@@ -3,8 +3,9 @@
 /* eslint-disable no-unused-vars */
 import React from "react";
 import { FaArrowRight } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
-const Job = ({ job }) => {
+const Job = ({ job, jobs }) => {
   const {
     title,
     salary,
@@ -13,9 +14,16 @@ const Job = ({ job }) => {
     category,
     status,
     image,
+    _id,
     skills,
     vacancy,
   } = job || {};
+
+  // const handleDetails = (id) => {
+  //   const details = jobs.find((job) => job._id === id);
+  //   console.log(details);
+  // };
+
   return (
     <div className="job col-md-12 col-sm-12 col-lg-6 ">
       <div className="row d-flex justify-content-center align-items-center single-card">
@@ -43,9 +51,11 @@ const Job = ({ job }) => {
             <p>Category: {category}</p>
           </div>
           <div className="text-end">
-            <button>
-              Apply <FaArrowRight />
-            </button>
+            <Link to={`/jobDetails/${_id}`}>
+              <button>
+                Apply <FaArrowRight />
+              </button>
+            </Link>
           </div>
         </div>
       </div>

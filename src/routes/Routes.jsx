@@ -12,6 +12,7 @@ import MainLayout from "../layouts/Main/MainLayout";
 import Home from "../pages/Home/Home";
 import AddJob from "../pages/AddJob/AddJob";
 import MyJobs from "../pages/MyJobs/MyJobs";
+import JobDetails from "../pages/JobDetails/JobDetails";
 
 const router = createBrowserRouter([
   {
@@ -37,6 +38,11 @@ const router = createBrowserRouter([
       {
         path: "/MyJobs",
         element: <MyJobs></MyJobs>,
+      },
+      {
+        path: 'jobDetails/:id',
+        element: <JobDetails></JobDetails>,
+        loader: ({params}) => fetch(`http://localhost:5000/jobDetails/${params.id}`)
       },
       {
         path: "services/:id",

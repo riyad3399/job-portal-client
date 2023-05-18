@@ -17,7 +17,7 @@ const AddJob = () => {
   const onSubmit = (data) => {
     data.skills = selectedOption;
 
-    fetch("http://localhost:5000/post-job", {
+    fetch("http://localhost:5000/jobPost", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
@@ -38,7 +38,7 @@ const AddJob = () => {
     { value: "MongoDB", label: "MongoDB" },
     { value: "Redux", label: "Redux" },
   ];
-//   console.log(user);
+  //   console.log(user);
   return (
     <div className="add-job-container">
       <div className="add-job row">
